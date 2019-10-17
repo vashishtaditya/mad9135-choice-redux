@@ -1,14 +1,22 @@
 import React from 'react';
-import AppHeader from './AppHeader'
+import { BrowserRouter as Router, Route, Switch }from 'react-router-dom';
+import AppUsers from './AppUsers'
 
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-     <AppHeader/>
-    </div>
-  );
+class App extends React.Component {
+  
+  render () {
+    return (
+
+      <Router>
+        <Switch>
+          <Route exact path="/" component={AppUsers} />
+
+        </Switch>
+      </Router>
+    );
+  }
 }
+
 
 export default App;
