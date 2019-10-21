@@ -25,7 +25,7 @@ class AppTodos extends React.Component {
 
     componentDidMount() {
         console.log('Posts did mount')
-        let url = `http://jsonplaceholder.typicode.com/posts?userId=${this.props.match.params.userId}`
+        let url = `https://jsonplaceholder.typicode.com/posts?userId=${this.props.match.params.userId}`
         fetch(url)
         .then(response => response.json())
         .then(this.buildList)
