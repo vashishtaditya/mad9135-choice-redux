@@ -4,10 +4,10 @@ import {NavLink} from 'react-router-dom'
 class AppHeader extends React.Component{
     render(){
         return (
-            <nav>
-                <NavLink exact to="/">Users</NavLink>
+            
+                <NavLink exact to="/users">Users</NavLink>
         
-            </nav>            
+                     
         );
     }
 }

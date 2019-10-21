@@ -1,11 +1,15 @@
 import React from 'react'
 import AppHeader from './AppHeader'
+import ProfileCard from './ProfileCard'
+
+
+
 
   
 class AppUsers extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = {         
             error: null,
             isLoaded: false,
             list: []
@@ -34,8 +38,12 @@ class AppUsers extends React.Component {
     render () {
         console.log('render')
         const {error, isLoaded, list} = this.state;
-        
-        //console.log("hello users" + this.state.users)
+        const userList = list.map(user => (
+            <ProfileCard key={user.id} user = {user} id={user.id}/>
+          
+        )
+        )                  
+     
         if(error){
             return <div>Error: {error.message}</div>
         } else if(!isLoaded){
@@ -44,13 +52,9 @@ class AppUsers extends React.Component {
         return (
             <div>
             <AppHeader/>
-            <ul>
-                {list.map(item => (
-                    <li key={item.id} id={item.id}>
-                        {'Name: ' + item.name +  '    Email: ' + item.email}
-                    </li>
-                ))}
-            </ul>
+           <section className="user-list">
+               {userList}
+           </section>
             </div>
         );
     }
