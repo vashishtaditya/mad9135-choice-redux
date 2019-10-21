@@ -51,9 +51,14 @@ class AppPosts extends React.Component {
         
 
             return(
+                <div className="main">
+                    <nav className="nav">
+                        <h1>Posts</h1>
+                    </nav>
                 <section className="post-list">
                 {postList}
             </section>
+            </div>
                 
 
             )

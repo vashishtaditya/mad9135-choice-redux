@@ -9,6 +9,7 @@ class UserDetail extends React.Component{
     render(){
         const toPost = `/posts/${this.props.detail.id}`
         const toTodos = `/todos/${this.props.detail.id}`
+        const toComments = `/comments${this.props.detail.id}`
         return(
             <div className="ProfileCard" >
             <div className="card-avatar">
@@ -24,6 +25,7 @@ class UserDetail extends React.Component{
 
             <NavLink to={toPost} >View Post</NavLink>
             <NavLink to={toTodos} >View Todos</NavLink>
+            <NavLink to={toComments}>View Comments</NavLink>
         
 
             </div>

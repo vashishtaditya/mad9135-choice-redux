@@ -1,9 +1,5 @@
 import React from 'react'
-import AppHeader from './AppHeader'
 import ProfileCard from './ProfileCard'
-
-
-
 
   
 class AppUsers extends React.Component {
@@ -51,7 +47,9 @@ class AppUsers extends React.Component {
         } else {
         return (
             <div>
-            <AppHeader/>
+                <nav className="nav">
+                    <h1>Users</h1>
+                </nav>
            <section className="user-list">
                {userList}
            </section>

@@ -1,5 +1,6 @@
 import React from 'react'
-import UserDetail from './UserDetail';
+import UserComments from './UserComments'
+
 
 
 class AppUserDetail extends React.Component{
@@ -10,14 +11,14 @@ class AppUserDetail extends React.Component{
             
             error: null,
             isLoaded: false,
-            details: []
+            comments: []
         }
     }
 
     buildList = (data)=>{
         console.log(data)
         this.setState({
-            details: data,
+            comments: data,
             isLoaded: true
         })
     }
@@ -27,7 +28,7 @@ class AppUserDetail extends React.Component{
 
     componentDidMount() {
         console.log('Details did mount')
-        let url = `https://jsonplaceholder.typicode.com/users/${this.props.match.params.id}`
+        let url = `https://jsonplaceholder.typicode.com/comments?postId=${this.props.match.params.id}`
         fetch(url)
         .then(response => response.json())
         .then(this.buildList)
@@ -38,14 +39,9 @@ class AppUserDetail extends React.Component{
 
     render(){
 
-        const {error, isLoaded, details} = this.state
-        const detailsArray = []
-        detailsArray.push(details)
-        const detailSection = detailsArray.map(detail => (
-            <div>
-                <h1 className="nav" >{detail.name}</h1>
-            <UserDetail key={detail.id} detail = {detail} id={detail.id}/>
-            </div>
+        const {error, isLoaded, comments} = this.state
+        const commentSection = comments.map(comment => (
+            <UserComments key={comment.id} comment = {comment} id={comment.id}/>
           
         )
         )
@@ -55,12 +51,9 @@ class AppUserDetail extends React.Component{
             return <div>Loading...</div>
         } else {
         return(
-          
-               
             <section className="user-detail">
-                {detailSection}
+                {commentSection}
             </section>
-            
 
         )
     }

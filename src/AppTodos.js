@@ -47,10 +47,7 @@ class AppTodos extends React.Component {
         } else if(!isLoaded){
             return <div>Loading...</div>
         } else {
-
-        
-
-            return(
+                  return(
                 <section className="todo-list">
                 {todosList}
             </section>
