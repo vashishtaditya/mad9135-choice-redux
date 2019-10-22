@@ -4,6 +4,7 @@ import ProfileCard from './ProfileCard'
   
 class AppUsers extends React.Component {
     constructor(props) {
+        console.log("hello")
         super(props);
         this.state = {         
             error: null,

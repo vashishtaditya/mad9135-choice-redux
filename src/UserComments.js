@@ -1,14 +1,15 @@
 import React from 'react'
 import './PostCard.css'
+import './CommentsCard.css'
 
 
 class UserComments extends React.Component {
     render() {
     return(
-        <div className="PostCard" >
+        <div className="CommentCard" >
              <div className="card-body">      
-                <p className="post-title">{this.props.comment.name}</p>
-                <p className="post-body">{this.props.comment.body}</p>  
+                <p className="comment-title">Email: {this.props.comment.email}</p>
+                <p className="comment-body">{this.props.comment.body}</p>  
             </div>
         </div>
 

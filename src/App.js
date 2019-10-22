@@ -21,7 +21,7 @@ class App extends React.Component {
           <Route exact path="/" component={AppUsers} />
           <Route path="/users/:id" component={AppUserDetail}/>
           <Route path="/posts/:userId" component={AppPosts}/>
-          <Route path="todos/:userID" component={AppTodos}/>
+          <Route path="/todos/:userID" component={AppTodos}/>
           <Route path="/comments/:ID" component={AppComments}/>     
         </Switch>
       </Router>

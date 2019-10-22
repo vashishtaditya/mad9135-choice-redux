@@ -3,10 +3,11 @@ import React from 'react'
 import TodosCard from './TodosCard'
 
 
-
+console.log("hello")
 class AppTodos extends React.Component {
     
     constructor(props) {
+        console.log(props)
         super(props);
         this.state = {
             error: null,
@@ -25,7 +26,7 @@ class AppTodos extends React.Component {
 
     componentDidMount() {
         console.log('Posts did mount')
-        let url = `https://jsonplaceholder.typicode.com/posts?userId=${this.props.match.params.userId}`
+        let url = `https://jsonplaceholder.typicode.com/todos?userId=${this.props.match.params.userID}`
         fetch(url)
         .then(response => response.json())
         .then(this.buildList)
@@ -34,7 +35,7 @@ class AppTodos extends React.Component {
         })
     }
            
-        render(){
+        render () {
             const {error, isLoaded, todos} = this.state
             const todosList = todos.map(todo => (
                 <TodosCard key={todo.id} todo = {todo} id={todo.id}/>
@@ -48,10 +49,15 @@ class AppTodos extends React.Component {
             return <div>Loading...</div>
         } else {
                   return(
+                      <div>
+                          <nav className="nav">
+                              <h1>ToDos</h1>
+                          </nav>
                 <section className="todo-list">
                 {todosList}
             </section>
-                
+            </div>
+              
 
             )
             }
