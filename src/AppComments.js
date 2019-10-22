@@ -28,7 +28,7 @@ class AppUserDetail extends React.Component{
 
     componentDidMount() {
         console.log('Details did mount')
-        let url = `http://jsonplaceholder.typicode.com/comments?postId=${this.props.match.params.ID}`
+        let url = `https://jsonplaceholder.typicode.com/comments?postId=${this.props.match.params.ID}`
         fetch(url)
         .then(response => response.json())
         .then(this.buildList)
