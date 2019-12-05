@@ -2,11 +2,6 @@
 // import fetchUsers from './actions/index'
 
 
-// let defaultState = {
-//     users: [],
-//     posts: [],
-//     todos: []
-// }
 
 // function reducer (state = defaultState, action){
 //     // if(action.type){
@@ -25,7 +20,7 @@
 // }
 
 // let store = createStore(
-//     reducer,
+//     allReducers,
 //   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 // )
 

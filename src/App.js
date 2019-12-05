@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
 
      
-      <Router basename="/mad9135-c1-react-router">
+      <Router basename="/">
         <Switch>
           <Route exact path="/" component={AppUsers} />
           <Route path="/users/:id" component={AppUserDetail}/>
