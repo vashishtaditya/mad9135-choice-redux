@@ -1,33 +1,20 @@
 import React from 'react'
 import UserComments from './UserComments'
+import {connect} from 'react-redux'
+import fetchComments from './actions/comments';
 
 
 
-class AppUserDetail extends React.Component{
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-            error: null,
-            isLoaded: false,
-            comments: []
-        }
-    }
+class AppComments extends React.Component{
 
     buildList = (data)=>{
         console.log(data)
-        this.setState({
-            comments: data,
-            isLoaded: true
-        })
+        this.props.onFetchComments(data)
     }
-
-
-
 
     componentDidMount() {
         console.log('Details did mount')
+        if (this.props.comments.length === 0) {
         let url = `https://jsonplaceholder.typicode.com/comments?postId=${this.props.match.params.ID}`
         fetch(url)
         .then(response => response.json())
@@ -36,20 +23,18 @@ class AppUserDetail extends React.Component{
             this.setState({error:error})
         })
     }
+    }
 
     render(){
 
-        const {error, isLoaded, comments} = this.state
+        const {comments} = this.props
+        console.log(comments)
         const commentSection = comments.map(comment => (
             <UserComments key={comment.id} comment = {comment} id={comment.id}/>
           
         )
         )
-        if(error){
-            return <div>Error: {error.message}</div>
-        } else if(!isLoaded){
-            return <div>Loading...</div>
-        } else {
+       
         return(
             <div>
                 <nav className="nav">
@@ -59,13 +44,18 @@ class AppUserDetail extends React.Component{
                 {commentSection}
             </section>
             </div>
-
         )
     }
     }
+
+const mapStateToProps = state => {
+       
+    return state
+}
+
+const mapActionsToState = {
+    onFetchComments: fetchComments
 }
 
 
-
-
-export default AppUserDetail
+export default connect (mapStateToProps, mapActionsToState)(AppComments)

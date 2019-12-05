@@ -1,31 +1,30 @@
 import React from 'react'
-
+import {connect} from 'react-redux'
 import PostCard from './PostCard'
+import fetchPosts from './actions/posts'
 
 
 
 class AppPosts extends React.Component {
     
-    constructor(props) {
-        super(props);
-        this.state = {
-            error: null,
-            isLoaded: false, 
-            posts: []
-        }
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         error: null,
+    //         isLoaded: false, 
+    //         posts: []
+    //     }
+    // }
 
     buildList = (data)=>{
         console.log(data)
-        this.setState({
-            posts: data,
-            isLoaded: true
-        })
+        this.props.onFetchPosts(data)
     }
 
     componentDidMount() {
         console.log('Posts did mount')
         let url = `https://jsonplaceholder.typicode.com/posts?userId=${this.props.match.params.userId}`
+        if (this.props.posts.length === 0) {
         fetch(url)
         .then(response => response.json())
         .then(this.buildList)
@@ -33,23 +32,14 @@ class AppPosts extends React.Component {
             this.setState({error:error})
         })
     }
+    }
            
         render(){
-            const {error, isLoaded, posts} = this.state
+            const {posts} = this.props
             const postList = posts.map(post => (
-                <PostCard key={post.id} post = {post} id={post.id}/>
-              
+                <PostCard key={post.id} post = {post} id={post.id}/>         
             )
-            )
-
-            if(error){
-            return <div>Error: {error.message}</div>
-        } else if(!isLoaded){
-            return <div>Loading...</div>
-        } else {
-
-        
-
+        )
             return(
                 <div className="main">
                     <nav className="nav">
@@ -64,7 +54,14 @@ class AppPosts extends React.Component {
             )
             }
         }
-    }
     
+    const mapStateToProps = state => {
+        return state
+    }
 
-    export default AppPosts
+    const mapActionsToState = {
+        onFetchPosts: fetchPosts
+    }
+
+    
+export default connect (mapStateToProps, mapActionsToState)(AppPosts)

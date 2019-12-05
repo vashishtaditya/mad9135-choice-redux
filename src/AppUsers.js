@@ -1,28 +1,16 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import ProfileCard from './ProfileCard'
-
+import fetchUsers from './actions/index'
   
 class AppUsers extends React.Component {
-    constructor(props) {
-        console.log("hello")
-        super(props);
-        this.state = {         
-            error: null,
-            isLoaded: false,
-            list: []
-        }
-    }
 
     buildList = (data)=>{
-        console.log(data)
-        this.setState({
-            list: data,
-            isLoaded: true
-        })
+        this.props.onFetchUsers(data)
     }
 
-    componentDidMount() {
-        console.log('did mount')
+    loadUsers() {
+
         let url = 'https://jsonplaceholder.typicode.com/users'
         fetch(url)
         .then(response => response.json())
@@ -32,21 +20,25 @@ class AppUsers extends React.Component {
         })
     }
 
+
+    componentDidMount() {
+        console.log('did mount')
+        this.loadUsers()
+    }
+
+
     render () {
-        console.log('render')
-        const {error, isLoaded, list} = this.state;
-        const userList = list.map(user => (
-            <ProfileCard key={user.id} user = {user} id={user.id}/>
-          
+       
+        
+        const {users} = this.props;
+        const userList = users.map(user => (
+            <ProfileCard key={user.id} user = {user} id={user.id}/>   
         )
-        )                  
+        )                 
+        console.log(this.props)
+        
      
-        if(error){
-            return <div>Error: {error.message}</div>
-        } else if(!isLoaded){
-            return <div>Loading...</div>
-        } else {
-        return (
+        return (           
             <div>
                 <nav className="nav">
                     <h1>Users</h1>
@@ -55,9 +47,19 @@ class AppUsers extends React.Component {
                {userList}
            </section>
             </div>
+       
         );
     }
-    }
+   
 }
+    const mapStateToProps = state => {
+       
+        return state
+    }
 
-export default AppUsers
+    const mapActionsToState = {
+        onFetchUsers: fetchUsers
+    }
+
+    
+export default connect (mapStateToProps, mapActionsToState)(AppUsers)

@@ -11,9 +11,7 @@ class UserComments extends React.Component {
                 <p className="comment-title">Email: {this.props.comment.email}</p>
                 <p className="comment-body">{this.props.comment.body}</p>  
             </div>
-        </div>
-
-        
+        </div>       
     )
     }
 }

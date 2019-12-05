@@ -7,15 +7,15 @@ import AppUserDetail from './AppUserDetail'
 import AppTodos from './AppTodos'
 import './App.css';
 
-
-
-
 class App extends React.Component {
   
-  
   render () {
+   
+ 
+  
     return (
 
+     
       <Router basename="/mad9135-c1-react-router">
         <Switch>
           <Route exact path="/" component={AppUsers} />
@@ -25,6 +25,8 @@ class App extends React.Component {
           <Route path="/comments/:ID" component={AppComments}/>     
         </Switch>
       </Router>
+    
+  
     );
   }
 }

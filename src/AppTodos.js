@@ -1,9 +1,8 @@
 import React from 'react'
-
+import {connect} from 'react-redux'
 import TodosCard from './TodosCard'
+import fetchTodos from './actions/toDos';
 
-
-console.log("hello")
 class AppTodos extends React.Component {
     
     constructor(props) {
@@ -18,15 +17,14 @@ class AppTodos extends React.Component {
 
     buildList = (data)=>{
         console.log(data)
-        this.setState({
-            todos: data,
-            isLoaded: true
-        })
+       this.props.onFetchTodos(data)
     }
 
     componentDidMount() {
         console.log('Posts did mount')
         let url = `https://jsonplaceholder.typicode.com/todos?userId=${this.props.match.params.userID}`
+        console.log(this.props.todos.length)
+        if (this.props.todos.length === 0) {
         fetch(url)
         .then(response => response.json())
         .then(this.buildList)
@@ -34,20 +32,17 @@ class AppTodos extends React.Component {
             this.setState({error:error})
         })
     }
-           
+    }
+    
         render () {
-            const {error, isLoaded, todos} = this.state
+            const {todos} = this.props
             const todosList = todos.map(todo => (
                 <TodosCard key={todo.id} todo = {todo} id={todo.id}/>
               
             )
             )
 
-            if(error){
-            return <div>Error: {error.message}</div>
-        } else if(!isLoaded){
-            return <div>Loading...</div>
-        } else {
+           
                   return(
                       <div>
                           <nav className="nav">
@@ -61,8 +56,16 @@ class AppTodos extends React.Component {
 
             )
             }
-        }
-    }
-    
+        }    
 
-    export default AppTodos
+    const mapStateToProps = state => {
+       
+        return state
+    }
+
+    const mapActionsToState = {
+        onFetchTodos: fetchTodos
+    }
+
+    
+export default connect(mapStateToProps, mapActionsToState)(AppTodos)
