@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mad9135-choice-redux/static/css/main.05aa3d64.chunk.css",
+    "main.js": "/mad9135-choice-redux/static/js/main.073451f2.chunk.js",
+    "main.js.map": "/mad9135-choice-redux/static/js/main.073451f2.chunk.js.map",
+    "runtime-main.js": "/mad9135-choice-redux/static/js/runtime-main.8a7f456a.js",
+    "runtime-main.js.map": "/mad9135-choice-redux/static/js/runtime-main.8a7f456a.js.map",
+    "static/js/2.3edb2462.chunk.js": "/mad9135-choice-redux/static/js/2.3edb2462.chunk.js",
+    "static/js/2.3edb2462.chunk.js.map": "/mad9135-choice-redux/static/js/2.3edb2462.chunk.js.map",
+    "index.html": "/mad9135-choice-redux/index.html",
+    "precache-manifest.8d2fa56b2bb30c68e81934d34a06340e.js": "/mad9135-choice-redux/precache-manifest.8d2fa56b2bb30c68e81934d34a06340e.js",
+    "service-worker.js": "/mad9135-choice-redux/service-worker.js",
+    "static/css/main.05aa3d64.chunk.css.map": "/mad9135-choice-redux/static/css/main.05aa3d64.chunk.css.map",
+    "static/media/myAvatar.png": "/mad9135-choice-redux/static/media/myAvatar.c3521c9e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8a7f456a.js",
+    "static/js/2.3edb2462.chunk.js",
+    "static/css/main.05aa3d64.chunk.css",
+    "static/js/main.073451f2.chunk.js"
+  ]
+}
